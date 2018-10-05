@@ -1,0 +1,65 @@
+
+
+***********************SSH*****************************************************
+    ssh usr@ip
+
+
+
+********************Connection root********************************************
+    sudo su
+
+
+
+
+
+******************installation Maria DB****************************************
+    apt-get install mariadb-server mariadb-client
+    mysql_secure_installation
+
+
+
+
+
+******************paquets supplémentaires-*************************************
+    apt-get install apache2 git vim proftpd ca-certificates apt-transport-https
+
+
+
+
+
+************************ PHP **************************************************
+    cd /tmp
+    wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+    sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+    apt-get update
+    apt-get install php php-mysql phpmyadmin libapache2-mpm-itk libapache2-mod-php php-curl php-gd php-json php-mbstring php-xml
+
+
+
+*******************Configuration des paquets***********************************
+    a2enmod rewrite userdir
+    vim /etc/apache2/mods-available/userdir.conf
+
+
+    adduser test
+    cd /home/test && mkdir public_html
+    chown test:test public_html
+    vim /etc/apache2/mods-available/php7.2.conf
+    
+    cd /etc/apache2/sites-available/
+    vim test.conf
+
+    a2ensite test.conf
+    service apache2 restart
+    
+   cd /home/test/public_html/
+   vim index.php
+
+
+==> dans un autre terminal
+   sudo vim /etc/hosts
+
+
+
+
+
