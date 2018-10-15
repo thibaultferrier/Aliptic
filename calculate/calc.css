@@ -1,0 +1,37 @@
+
+body{
+}
+
+table{
+	margin:auto;
+	margin-top: 8%;
+	padding: 15px;
+	background: #293d3d;
+	border-radius: 5px;
+}
+
+input{
+	height: 30px;
+	margin: 10px;
+	background: black;
+	font: comic;
+	padding: 2px;
+	text-align: center;
+	vertical-align: center;
+	color: white;
+	border-radius: 3px;
+	border: none;
+}
+
+
+
+button{
+	background-color: #768d87;
+	border-radius:5px;
+	font-size: 20px;
+	color:#ffffff;
+	cursor: pointer;
+	box-shadow: inset 0px 1px 3px 0px #91b8b3;
+	width: 60px;
+	height: 50px;
+}
