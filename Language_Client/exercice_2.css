@@ -1,0 +1,80 @@
+body {
+	font-family: 'Dosis', sans-serif;
+}
+
+#wrap {
+		width       : 700px ;
+		height      : 50%;
+		margin      : 100px auto ;
+		border      : solid 8px;
+		border-color: #DFDFDF;		
+}
+
+h1 {
+	color    : #B5B1AD;
+	font-size: 15px;
+	text-align: left;
+}
+
+div.part{
+	border      :solid 2px;
+	border-color: #B5B1AD;
+	border-style: none solid  none solid;
+	padding     : 20px;
+	text-align: right;
+}
+
+	.part:last-child{
+	border      : border:solid 2px;
+	border-color: #B5B1AD;
+	border-style: solid solid  solid solid;	
+	}
+
+	.part:first-child{
+	border      : border:solid 2px;
+	border-color: #B5B1AD;
+	border-style: solid solid  solid solid;	
+	}
+
+span {
+	color: red;
+}
+
+input {
+	width        : 450px;
+	box-shadow   :inset 0 0 15px #ccc;
+	border-radius: 4px;
+	border       : none;
+	background   : transparent;
+	padding-left : 12px;
+}
+
+select {
+	margin-right: 368px;
+}
+
+textarea{
+	width        : 310px;
+	margin-right : 150px;
+	box-shadow   :inset 0 0 15px #ccc;
+	border-radius: 4px;
+	border       : none;
+	background   : transparent;
+}
+
+button{
+	padding         : 5px;
+	border-radius   : 5px;
+	text-decoration : none;
+	background      : #D3D3D3;
+	background-image: linear-gradient(to bottom, #c7c7c7, #828485);
+	border-radius   : 8px;
+	padding         : 5px;
+	text-decoration : none;
+}
+
+
+button:hover {
+	background: #3cb0fd;
+	cursor    : pointer;
+}
