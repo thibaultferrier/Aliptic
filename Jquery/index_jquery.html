@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Animals ?</title>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+		<style>
+			.left{float:left}
+			.right{float:right}
+			.clear{clear:both}
+			.big{font-size:16px;font-weight:700}
+			.italic{font-style:italic}
+			a{color:#332133;font-weight:400;text-decoration:underline}
+			a:hover{text-decoration:none;font-weight:700}
+			p{font-size:13px;margin:10px}
+			body{color:#444;padding:0;margin:0;background-color:#E5E5E5;font-family:'Roboto',arial,sans-serif}
+			.center{text-align:center}
+			#resultat,#question{display:none}
+			.inner{width:900px;margin:0 auto;padding-top:150px;border-color:#d8d8d8;border-left:1px solid #d8d8d8;border-radius:3px;border-right:1px solid #d8d8d8;border-style:solid;border-width:0 1px 2px;background:#fff url("http://lorempixel.com/900/300/nature/") center top no-repeat}
+			.container{width:370px;margin:0 auto 20px;min-height:20px;padding:19px;background-color:#fff;border-color:#d8d8d8;border-left:1px solid #d8d8d8;border-radius:3px;border-right:1px solid #d8d8d8;border-style:solid;border-width:0 1px 2px}
+			.container form label{display:inline-block;font-weight:700;margin-bottom:5px;max-width:100%}
+			.container form input,.container form select{background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;box-shadow:0 1px 1px rgba(0,0,0,0.075) inset;color:#555;display:block;font-size:14px;height:34px;line-height:1.42857;padding:6px 12px;transition:border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0;margin-bottom:20px}
+			.container form .radio label,.container form .radio input{display:inline-block;height:auto}
+			.image-circle{border-radius:500px}
+			h2{margin:10px 0;color:#444;line-height:40px;font-size:29px;font-weight:400}
+			#more,.container form input[type=submit]{text-decoration:none;vertical-align:middle;text-align:center;margin:0;padding:0 8px;cursor:pointer;display:inline-block;font-size:13px;font-weight:700;border-radius:2px;box-shadow:none;background-color:#4387f5;background-image:linear-gradient(to bottom,#4d90fe,#357ae8);background-repeat:repeat-x;border-color:rgba(0,0,0,0.1);color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,0.25);height:27px;line-height:27px;min-height:27px}
+			#question{margin:30px 0}
+		</style>
+	</head>
+	<body>
+		<div class="inner">
+			<div class="container" id="formulaire">
+				<form>
+					<div class="bloc center">
+						<img class="image-circle" src="http://lorempixel.com/140/140/animals/" />
+					</div>
+					<h2>Alors alors ?</h2>
+					<p>
+						Bien sûr, vous savez quel animal je suis...
+						<br />
+						... mais pouvez-vous m'en dire plus ?
+					</p>
+					<p>
+						<a href="#" id="more">Bien sûr ! »</a>
+					</p>
+
+					<div id="question" style="display:none;">
+						<div class="field">
+							<label for="espece">
+								Quelle est mon espèce ?
+							</label>
+							<input type="text" name="espece" id="espece" value=""/>
+						</div>
+						<div class="field">
+							<label for="poil">
+								Quelle est la couleur de mon poil ?
+							</label>
+							<input type="text" name="poil" id="poil" value=""/>
+						</div>
+						<div class="field">
+							De quel continent suis-je originaire ?
+							<select>
+								<option value="" selected="selected"></option>
+								<option value="Europe">Europe</option>
+								<option value="Asie">Asie</option>
+								<option value="Océanie">Océanie</option>
+								<option value="Amérique">Amérique</option>
+								<option value="Afrique">Afrique</option>
+							</select>
+						</div>
+						<div class="field">
+							Vous êtes certain ? :
+							<div class="radio">
+								<input type="radio" name="certain" id="oui" value="oui"/>
+								<label for="oui">
+									oui
+								</label>
+								<br />
+								<input type="radio" name="certain" id="non" value="non" checked="checked"/>
+								<label for="non">
+									non
+								</label>
+							</div>
+						</div>
+						<input type="submit" value="Ok"/>
+					</div>
+				</form>
+			</div>
+			<div id="resultat" class="container">
+				<h2>
+					Bon bon bon...
+				</h2>
+				<div class="bloc center">
+					<img src="" class="image-circle" />
+				</div>
+				<div class="bloc">
+					<p class="big"></p>
+					<p></p>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+		<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+		<script type="text/javascript">
+				$( document ).ready(function() {
+					//on assigne un evenement au bouton click
+					$('#more').click( function () {
+						//on choisi de l'afficher ou pas suivant son état
+						if($('#question').css('display') == 'none'){
+							//console.log("on en est la");
+							$('#question').show()
+						} else {
+							$('#question').hide()
+						}
+						return false;
+					});
+
+					//listener de l'envoi du formulaire
+					$('form').submit( function (event) {
+						//annule le comportement de base du bouton submit
+						event.preventDefault();
+       					event.stopPropagation();
+
+						//déclaration des variables
+						var espece = $('#espece');
+						var poil = $('#poil');
+						var certain = $('[name=certain]:checked');
+						var continent = $('select option:selected');
+						
+						// Test des champs 
+						if(!espece.val() || !poil.val() || !continent.text() || !certain.val() ){
+							alert("Veuillez remplir tous les champs !");
+							return false;
+						}
+
+						//affichage des résultats
+						var para_espece_a_poil = '... je suis donc un(e) '+espece.val()+' à poils '+poil.val();
+						var para_continent = '<span class="big">... et mon continent d\'origine est : "'+continent.text()+'"</span>';
+
+						//image
+						var img_src = $('form img.image-circle').attr('src');
+						$('#resultat img.image-circle').attr('src',img_src);
+
+						//para 1
+						$('#resultat p:first').text(para_espece_a_poil);
+
+						//para 2
+						$('#resultat p:last').html(para_continent);
+
+						//on cache le formulaire
+						$('#formulaire').hide();
+
+						//on affiche les paragraphes
+						$('#resultat').css('display','block');
+						$('#OK').css('display','block');
+					});
+				});
+		</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<iframe src="https://giphy.com/embed/rl7Q4gxngrxVC" width="240" height="135" frameBorder="0" class="giphy-embed" " id="OK" style="display: none; margin:50px auto;"></iframe>
+	</body>
+</html>
